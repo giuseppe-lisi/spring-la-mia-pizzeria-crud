@@ -15,8 +15,8 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-12">
-                <p>ecco la lista delle pizze</p>
-                <table class="table">
+                <table class="table" th:if="${pizzas.size() > 0}">
+                    <h3>Lista delle pizze disponibili</h3>
                     <thead>
                         <tr scope="row">
                             <th scope="col">Pizza</th>
@@ -32,6 +32,10 @@
                         </tr>
                     </tbody>
                 </table>
+            </div>
+            <div class="col-12 text-bg-warning bg-warning-subtle rounded-3" th:unless="${pizzas.size() > 0}">
+                <h4>Non sono state trovate pizze</h4>
+                <p>La ricerca non ha prodotto alcun risultato</p>
             </div>
         </div>
     </div>
