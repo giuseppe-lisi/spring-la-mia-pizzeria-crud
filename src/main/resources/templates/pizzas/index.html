@@ -15,8 +15,8 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-12">
+                <h3>Lista delle pizze disponibili</h3>
                 <table class="table" th:if="${pizzas.size() > 0}">
-                    <h3>Lista delle pizze disponibili</h3>
                     <thead>
                         <tr scope="row">
                             <th scope="col">Pizza</th>
@@ -26,7 +26,8 @@
                     </thead>
                     <tbody>
                         <tr scope="row" th:each="pizza : ${pizzas}" th:object="${pizza}">
-                            <td><a class="link-underline-opacity-0 link-primary" th:href="@{'/pizzas/' + *{id}}">[[*{name}]]</a></td>
+                            <td><a class="link-underline-opacity-0 link-primary"
+                                    th:href="@{'/pizzas/' + *{id}}">[[*{name}]]</a></td>
                             <td th:text="*{description}"></td>
                             <td th:text="*{price} + '0 €'"></td>
                         </tr>
