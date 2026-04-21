@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
 @Controller
 @RequestMapping("/pizzas")
 public class PizzaController {
@@ -22,12 +21,16 @@ public class PizzaController {
     @Autowired
     private PizzaRepository repo;
 
-    @GetMapping("/")
-    public String index(Model model) {
-        List<Pizza> result = repo.findAll();
+    @GetMapping()
+    public String index(Model model, @RequestParam(required = false) String name) {
+        if (name != null) {
+            List<Pizza> result = repo.findByNameContaining(name);
+            model.addAttribute("pizzas", result);
+        } else {
+            List<Pizza> result = repo.findAll();
+            model.addAttribute("pizzas", result);
+        }
 
-        model.addAttribute("pizzas", result);
-        
         return "pizzas/index";
     }
 
@@ -39,6 +42,5 @@ public class PizzaController {
 
         return "pizzas/show";
     }
-    
-    
+
 }

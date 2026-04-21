@@ -14,8 +14,16 @@
 
     <div class="container mt-5">
         <div class="row">
-            <div class="col-12">
+            <div class="col-9 mb-3">
                 <h3>Lista delle pizze disponibili</h3>
+            </div>
+            <div class="col-3">
+                <form class="input-group" method="GET" th:action="@{/pizzas}">
+                    <input type="text" class="form-control" placeholder="Cerca..." name="name">
+                    <button class="btn btn-outline-primary" type="submit" id="button-addon1">Cerca</button>
+                </form>
+            </div>
+            <div class="col-12">
                 <table class="table" th:if="${pizzas.size() > 0}">
                     <thead>
                         <tr scope="row">
@@ -34,7 +42,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="col-12 text-bg-warning bg-warning-subtle rounded-3" th:unless="${pizzas.size() > 0}">
+            <div class="col-12 text-bg-warning bg-warning-subtle rounded-3 p-3" th:unless="${pizzas.size() > 0}">
                 <h4>Non sono state trovate pizze</h4>
                 <p>La ricerca non ha prodotto alcun risultato</p>
             </div>
