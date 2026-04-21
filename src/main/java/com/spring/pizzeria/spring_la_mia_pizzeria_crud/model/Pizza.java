@@ -66,7 +66,7 @@ public class Pizza {
     public double getPrice() {
       return this.price;
     }
-    public void setPrice(float value) {
+    public void setPrice(double value) {
       this.price = value;
     }
 
