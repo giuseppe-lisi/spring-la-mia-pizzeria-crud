@@ -22,9 +22,9 @@ public class PizzaController {
     @GetMapping("/index")
     public String index(Model model) {
         List<Pizza> result = repo.findAll();
-        String pizzasString = result.toString();
 
-        model.addAttribute("pizzas", pizzasString);
+        model.addAttribute("pizzas", result);
+        
         return "pizzas/index";
     }
     

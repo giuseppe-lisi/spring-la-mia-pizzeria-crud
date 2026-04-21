@@ -16,7 +16,22 @@
         <div class="row">
             <div class="col-12">
                 <p>ecco la lista delle pizze</p>
-                <p th:text="${pizzas}"></p>
+                <table class="table">
+                    <thead>
+                        <tr scope="row">
+                            <th scope="col">Pizza</th>
+                            <th scope="col">Descrizione</th>
+                            <th scope="col">Prezzo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr scope="row" th:each="pizza : ${pizzas}" th:object="${pizza}">
+                            <td th:text="*{name}"></td>
+                            <td th:text="*{description}"></td>
+                            <td th:text="*{price} + ' €'"></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
