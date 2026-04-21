@@ -2,7 +2,7 @@ package com.spring.pizzeria.spring_la_mia_pizzeria_crud.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.spring.pizzeria.spring_la_mia_pizzeria_crud.model.Pizza;
+import com.spring.pizzeria.spring_la_mia_pizzeria_crud.models.Pizza;
 
 // interfaccia repository che estendendo JpaRepository ci fornirà in automatico tutti i metodi
 // base per eseguire operazioni crud... mezzo una figata. 
