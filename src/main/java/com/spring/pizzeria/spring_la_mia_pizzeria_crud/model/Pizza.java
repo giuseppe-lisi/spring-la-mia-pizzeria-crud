@@ -30,7 +30,6 @@ public class Pizza {
     
     private String img;
 
-    @NotBlank(message = "Pizza must have a price")
     @Min(value = 0, message = "Price must be positive")
     private double price;
 
