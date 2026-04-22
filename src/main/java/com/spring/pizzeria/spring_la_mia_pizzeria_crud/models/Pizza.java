@@ -1,13 +1,20 @@
 package com.spring.pizzeria.spring_la_mia_pizzeria_crud.models;
 
+import java.math.BigDecimal;
+import java.text.ListFormat.Style;
+
+import org.springframework.format.annotation.NumberFormat;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "pizza")
@@ -21,17 +28,20 @@ public class Pizza {
     private int id;
 
     @Column(nullable = false)
-    @NotBlank(message = "Name cannot be empty")
+    @NotBlank(message = "Name cannot be empty or shorter than 3 characters")
+    @Size(min = 3)
     private String name;
     
+    @Lob
     @Column(nullable = false, columnDefinition = "TEXT")
     @NotBlank(message = "You must enter a description")
     private String description;
     
     private String img;
 
+    @Column(precision = 10, scale = 2)
     @Min(value = 0, message = "Price must be positive")
-    private double price;
+    private BigDecimal price;
 
     // getter e setter
     public int getId() {
@@ -62,10 +72,10 @@ public class Pizza {
       this.img = value;
     }
 
-    public double getPrice() {
+    public BigDecimal getPrice() {
       return this.price;
     }
-    public void setPrice(double value) {
+    public void setPrice(BigDecimal value) {
       this.price = value;
     }
 
