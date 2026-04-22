@@ -41,6 +41,10 @@
                                     th:href="@{'/pizzas/' + *{id}}">[[*{name}]]</a></td>
                             <td th:text="*{description}"></td>
                             <td th:text="|€ ${#numbers.formatDecimal(pizza.price, 1, 2, 'COMMA')}|"></td>
+                            <td><a th:href="@{'/pizzas/edit/' + *{id}}"><button class="btn btn-warning btn-sm">Modifica</button></a>
+                            </td>
+                            <td><a><button class="btn btn-sm btn-danger">Elimina</button></a>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
