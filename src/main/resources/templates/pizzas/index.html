@@ -41,9 +41,39 @@
                                     th:href="@{'/pizzas/' + *{id}}">[[*{name}]]</a></td>
                             <td th:text="*{description}"></td>
                             <td th:text="|€ ${#numbers.formatDecimal(pizza.price, 1, 2, 'COMMA')}|"></td>
-                            <td><a th:href="@{'/pizzas/edit/' + *{id}}"><button class="btn btn-warning btn-sm">Modifica</button></a>
+                            <td><a th:href="@{'/pizzas/edit/' + *{id}}"><button
+                                        class="btn btn-warning btn-sm">Modifica</button></a>
                             </td>
-                            <td><a><button class="btn btn-sm btn-danger">Elimina</button></a>
+                            <td>
+                                <!-- Modal trigger -->
+                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                                    data-bs-target="#deleteModal">
+                                    Elimina
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="deleteModal" tabindex="-1">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5">Cancellare
+                                                    definitivamente la pizza?</h1>
+                                                <button type="button" class="btn-close"
+                                                    data-bs-dismiss="modal"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Stai per eliminare la pizza [[*{name}]]</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-primary"
+                                                    data-bs-dismiss="modal">Indietro</button>
+                                                <form th:action="@{'/pizzas/delete/' + *{id}}" method="post">
+                                                    <button type="submit" class="btn btn-danger">Elimina</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                     </tbody>
