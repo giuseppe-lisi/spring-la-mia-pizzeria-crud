@@ -29,18 +29,18 @@ public class Pizza {
 
     @Column(nullable = false)
     @NotBlank(message = "Name cannot be empty or shorter than 3 characters")
-    @Size(min = 3)
+    @Size(min = 3, message = "Inserisci almeno 3 caratteri")
     private String name;
     
     @Lob
     @Column(nullable = false, columnDefinition = "TEXT")
-    @NotBlank(message = "You must enter a description")
+    @NotBlank(message = "Inserisci una descrizione")
     private String description;
     
     private String img;
 
     @Column(precision = 10, scale = 2)
-    @Min(value = 0, message = "Price must be positive")
+    @Min(value = 0, message = "Il prezzo deve essere positivo")
     private BigDecimal price;
 
     // getter e setter
