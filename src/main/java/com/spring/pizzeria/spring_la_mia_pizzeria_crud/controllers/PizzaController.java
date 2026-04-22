@@ -68,4 +68,11 @@ public class PizzaController {
         return "redirect:/pizzas";
     }
 
+    @GetMapping("/edit/{id}")
+    public String edit(@PathVariable String id) {
+        
+        return "pizzas/edit";
+    }
+    
+
 }
